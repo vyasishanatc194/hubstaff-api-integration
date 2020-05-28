@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html ng-app="digimark" ng-controller="RootController as root">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mini Project</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <base href="/" />
+    {% include 'stylesheets.html' %}
+</head>
+<body>
+    <div class="loading" id="loading">Loading&#8230;</div>
+    <!-- START: Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Mini Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+          </div>
+        </div>
+    </nav>
+    <!-- END: Header -->
+
+    <!-- START: Employee DATA Table -->
+    <div class="container mt-20">
+        <div class="row">
+            <div class="col-12 col-xl-4">
+                <div class="form-group mb-xl-0">
+                    <label class="form-label">Select Date</label>
+                    <input class="form-control" type="text" name="datesingle" />
+                </div>
+            </div>
+            <div class="col-2 col-xl-2">
+                <div class="form-group mb-xl-0">
+                    <label class="form-label">Download</label>
+                    <button type="button" id="OutputCSV" class="form-control btn btn-outline-info">CSV</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="custom-table"></div>
+    </div>
+    <!-- END: Employee DATA Table -->
+</body>
+{% include 'javascripts.html' %}
+</html>
