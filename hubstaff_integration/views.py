@@ -56,81 +56,15 @@ class HubStaffUsers(APIView):
         response_data = []
         param = request.query_params.get('date', None)
         date_obj = datetime.datetime.strptime(param, '%Y-%m-%d')
-        # hubstaff = hubStaffAuthentication()
-        # org_list = hubstaff.get_organizations_list()
-        # # Get Only Defined Organization whichis in config.py
-        # organization = list(filter(lambda org: org['name'] == config.HUBSTAFF_ORGANIZATION, org_list))
-        # if organization:
-        #     response_data = hubstaff.get_custom_by_date_team_endpoint(
-        #                 date_obj, date_obj,
-        #                 [organization[0]['id']]
-        #             )
-        response_data = [
-                    {
-                        "id": 262026,
-                        "name": "rt-bot-109",
-                        "duration": 13868,
-                        "dates": [
-                            {
-                                "date": "2020-05-27",
-                                "duration": 13868,
-                                "users": [
-                                    {
-                                        "id": 866822,
-                                        "name": "Ishan Vyas",
-                                        "duration": 13868,
-                                        "projects": [
-                                            {
-                                                "id": 1043549,
-                                                "name": "hubstaff bot109",
-                                                "duration": 13868
-                                            },
-                                            {
-                                                "id": 1043550,
-                                                "name": "hubstaff bot510",
-                                                "duration": 5000
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "id": 866823,
-                                        "name": "Test Vyas",
-                                        "duration": 10868,
-                                        "projects": [
-                                            {
-                                                "id": 1043552,
-                                                "name": "TEst530",
-                                                "duration": 12000
-                                            },
-                                            {
-                                                "id": 1043549,
-                                                "name": "hubstaff bot109",
-                                                "duration": 10868
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "id": 866824,
-                                        "name": "New user",
-                                        "duration": 15000,
-                                        "projects": [
-                                            {
-                                                "id": 1043556,
-                                                "name": "Hello123",
-                                                "duration": 15000
-                                            },
-                                            {
-                                                "id": 1043549,
-                                                "name": "hubstaff bot109",
-                                                "duration": 12500
-                                            },
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+        hubstaff = hubStaffAuthentication()
+        org_list = hubstaff.get_organizations_list()
+        # Get Only Defined Organization whichis in config.py
+        organization = list(filter(lambda org: org['name'] == config.HUBSTAFF_ORGANIZATION, org_list))
+        if organization:
+            response_data = hubstaff.get_custom_by_date_team_endpoint(
+                        date_obj, date_obj,
+                        [organization[0]['id']]
+                    )
         # Generate response data in matrix form to display in CSV and HTML Table
         if response_data:
             response_data = [generate_formatted_data(response_data)]
